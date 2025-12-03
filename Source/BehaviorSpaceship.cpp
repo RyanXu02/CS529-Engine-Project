@@ -137,6 +137,9 @@ namespace CS529
 			Collider* collider = Parent()->Get<ColliderCircle>();
 			if (!collider) return;
 			collider->RegisterHandler(CollisionHandler);
+
+			Physics* physics = Parent()->Get<Physics>();
+			physics->Drag(0.99f);
 		}
 		else if (stateCurr == cSpaceshipDead) {
 			timer = spaceshipDeathDuration;
@@ -224,7 +227,6 @@ namespace CS529
 		Physics* physics = Parent()->Get<Physics>();
 		Transform* transform = Parent()->Get<Transform>();
 		if(!physics || !transform) return;
-		physics->Drag(0.99f);
 
 		float rotation = transform->Rotation();
 		Vector2D uRotDir;

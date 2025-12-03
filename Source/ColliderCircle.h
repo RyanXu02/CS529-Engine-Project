@@ -64,6 +64,11 @@ namespace CS529
 		// @return float = The radius (squared) of the circle collider.
 		float RadiusSquared() const { return radius * radius; }
 
+		// @brief Set the radius of the circle collider.
+		//
+		// @param float = The radius of the circle collider.
+		void Radius(float newRadius) { radius = newRadius; }
+
 		// Public Event Handlers
 	public:
 

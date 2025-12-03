@@ -77,19 +77,6 @@ namespace CS529
 		// @return bool = True if the key was found, otherwise false.
 		bool Contains(std::string_view key);
 
-		// @brief Reads the contents of an array by iterating through the array items.
-		// @brief Specific Steps:
-		// @brief   If the stream contains 'key' (the 1st parameter),
-		// @brief     Traverse down the tree to the 'key' node (PushNode).
-		// @brief     Iterate through the array items (use 'dataNode->items()').
-		// @brief       Push the current dataNode onto the dataStack.
-		// @brief       Set the dataNode equal to the current value (e.g. item.value()).
-		// @brief       Invoke the lambda function, passing current key (the component Name).
-		// @brief       Return to the previous location in the tree (PopNode).
-		// @brief     Return to the previous location in the tree (PopNode).
-		//
-		// @param key = The key associated with the array (AKA value) to be read.
-		// @param lambda = A function to be called for each item in the array.
 		void ReadArray(std::string_view key, std::function<void()> lambda);
 
 		// @brief Reads the contents of an object by iterating through the key:value pairs.

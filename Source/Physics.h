@@ -73,6 +73,8 @@ namespace CS529
 		// @brief     Set oldTranslation = translation
 		// @brief     Use the Vector2D::ScaleAdd function to perform the following calculation:
 		// @brief       velocity += acceleration * dt
+		// @brief     OPTIONAL FEATURE: Scale velocity by drag.
+		// @brief       [NOTE: The spaceship can be given a drag of 0.99f.  All other entities should have a drag of 1.0f.]
 		// @brief     Use the Vector2D::ScaleAdd function to perform the following calculation:
 		// @brief       translation += velocity * dt
 		// @brief     Store the new translation in the transform component.

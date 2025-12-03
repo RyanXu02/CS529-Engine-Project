@@ -61,7 +61,12 @@ namespace CS529
 		void Render() const;
 
 		// @brief Add a new entity to the container.
-		void Add(Entity* entity) { entities.push_back(entity); }
+		// @brief Specific Steps:
+		// @brief   Initialize the entity.
+		// @brief   Add the entity to the container.
+		//
+		// @param entity = The entity to be added to the container.
+		void Add(Entity* entity);
 
 		// @brief Find an entity in the container that has a matching name.
 		// @brief [NOTE: This function returns only the first matching entity.]

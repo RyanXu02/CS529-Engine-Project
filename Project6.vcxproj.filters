@@ -214,10 +214,13 @@
     <ClCompile Include="Source\BehaviorTeleporter.cpp">
       <Filter>Source Files\Game\Behaviors</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Color.cpp">
+    <ClCompile Include="Source\Random.cpp">
       <Filter>Source Files\Engine\Framework</Filter>
     </ClCompile>
-    <ClCompile Include="Source\Random.cpp">
+    <ClCompile Include="Source\SpriteSourceLibrary.cpp">
+      <Filter>Source Files\Engine\Entities\Components\Sprite</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\Color.cpp">
       <Filter>Source Files\Engine\Framework</Filter>
     </ClCompile>
     <ClCompile Include="Source\BehaviorAsteroid.cpp">
@@ -232,11 +235,14 @@
     <ClCompile Include="Source\ScoreSystem.cpp">
       <Filter>Source Files\Game\Systems\Score</Filter>
     </ClCompile>
-    <ClCompile Include="Source\SpriteSourceLibrary.cpp">
-      <Filter>Source Files\Engine\Entities\Components\Sprite</Filter>
-    </ClCompile>
     <ClCompile Include="Source\BehaviorHudText.cpp">
       <Filter>Source Files\Game\Behaviors</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\OmegaScene.cpp">
+      <Filter>Source Files\Game\Scenes</Filter>
+    </ClCompile>
+    <ClCompile Include="Source\ColliderLine.cpp">
+      <Filter>Source Files\Engine\Entities\Components\Collider</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -372,6 +378,9 @@
     <ClInclude Include="Source\BehaviorBullet.h">
       <Filter>Source Files\Game\Behaviors</Filter>
     </ClInclude>
+    <ClInclude Include="Source\BehaviorTeleporter.h">
+      <Filter>Source Files\Game\Behaviors</Filter>
+    </ClInclude>
     <ClInclude Include="Source\Random.h">
       <Filter>Source Files\Engine\Framework</Filter>
     </ClInclude>
@@ -380,6 +389,9 @@
     </ClInclude>
     <ClInclude Include="Source\Color.h">
       <Filter>Source Files\Engine\Framework</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\BehaviorAsteroid.h">
+      <Filter>Source Files\Game\Behaviors</Filter>
     </ClInclude>
     <ClInclude Include="Source\Collider.h">
       <Filter>Source Files\Engine\Entities\Components\Collider</Filter>
@@ -390,14 +402,17 @@
     <ClInclude Include="Source\ScoreSystem.h">
       <Filter>Source Files\Game\Systems\Score</Filter>
     </ClInclude>
-    <ClInclude Include="Source\BehaviorTeleporter.h">
-      <Filter>Source Files\Game\Behaviors</Filter>
-    </ClInclude>
-    <ClInclude Include="Source\BehaviorAsteroid.h">
-      <Filter>Source Files\Game\Behaviors</Filter>
-    </ClInclude>
     <ClInclude Include="Source\BehaviorHudText.h">
       <Filter>Source Files\Game\Behaviors</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\ColliderLine.h">
+      <Filter>Source Files\Engine\Entities\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\CollisionRecord.h">
+      <Filter>Source Files\Engine\Entities\Components\Collider</Filter>
+    </ClInclude>
+    <ClInclude Include="Source\OmegaScene.h">
+      <Filter>Source Files\Game\Scenes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -472,6 +487,24 @@
     </None>
     <None Include="Data\Archetypes\AsteroidsWaveCount.json">
       <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Archetypes\Arena.json">
+      <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Archetypes\OmegaHighScore.json">
+      <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Archetypes\OmegaScore.json">
+      <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Archetypes\OmegaWaveCount.json">
+      <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Archetypes\SpaceshipOmega.json">
+      <Filter>JSON Files\Data\Archetypes</Filter>
+    </None>
+    <None Include="Data\Meshes\MeshArena.json">
+      <Filter>JSON Files\Data\Meshes</Filter>
     </None>
   </ItemGroup>
 </Project>

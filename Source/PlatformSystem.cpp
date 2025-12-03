@@ -3,7 +3,7 @@
 // File Name:	PlatformSystem.cpp
 // Author(s):	Doug Schilling (dschilling)
 // Course:		CS529F25
-// Project:		Project 0
+// Project:		Project 6
 // Purpose:		System for implementing Windows platform-specific functionality.
 //
 // Copyright © 2025 DigiPen (USA) Corporation.
@@ -164,7 +164,7 @@ namespace CS529
 		DGL_SysInitInfo initInfo = {};
 		initInfo.mAppInstance = appInstance;
 		initInfo.mShow = showWindow;
-		initInfo.mWindowTitle = "CS529F25 Project 5 - Asteroids";
+		initInfo.mWindowTitle = "CS529F25 Project 6 - Omega";
 		initInfo.mWindowWidth = 1024;
 		initInfo.mWindowHeight = 768;
 		initInfo.mMaxFrameRate = 60;

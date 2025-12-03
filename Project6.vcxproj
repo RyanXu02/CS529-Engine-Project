@@ -245,10 +245,11 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Source\Color.cpp">
+    <ClCompile Include="Source\ColliderLine.cpp">
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Source\Color.cpp" />
     <ClCompile Include="Source\Component.cpp" />
     <ClCompile Include="Source\DemoScene.cpp">
       <SubType>
@@ -296,6 +297,7 @@
       <SubType>
       </SubType>
     </ClCompile>
+    <ClCompile Include="Source\OmegaScene.cpp" />
     <ClCompile Include="Source\Physics.cpp">
       <SubType>
       </SubType>
@@ -340,10 +342,7 @@
       <SubType>
       </SubType>
     </ClCompile>
-    <ClCompile Include="Source\SpriteSourceLibrary.cpp">
-      <SubType>
-      </SubType>
-    </ClCompile>
+    <ClCompile Include="Source\SpriteSourceLibrary.cpp" />
     <ClCompile Include="Source\Stream.cpp">
       <SubType>
       </SubType>
@@ -415,6 +414,11 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Source\ColliderLine.h" />
+    <ClInclude Include="Source\CollisionRecord.h">
+      <SubType>
+      </SubType>
+    </ClInclude>
     <ClInclude Include="Source\Color.h" />
     <ClInclude Include="Source\Component.h" />
     <ClInclude Include="Source\Container.h">
@@ -467,6 +471,7 @@
       <SubType>
       </SubType>
     </ClInclude>
+    <ClInclude Include="Source\OmegaScene.h" />
     <ClInclude Include="Source\Physics.h">
       <SubType>
       </SubType>
@@ -532,6 +537,7 @@
     <None Include="..\Templates\TemplateObject.vstemplate" />
     <None Include="..\Templates\TemplateScene.vstemplate" />
     <None Include="..\Templates\TemplateSystem.vstemplate" />
+    <None Include="Data\Archetypes\Arena.json" />
     <None Include="Data\Archetypes\Asteroid.json" />
     <None Include="Data\Archetypes\AsteroidsHighScore.json" />
     <None Include="Data\Archetypes\AsteroidsWaveCount.json" />
@@ -539,13 +545,18 @@
     <None Include="Data\Archetypes\AsteroidsScore.json" />
     <None Include="Data\Archetypes\Monkey.json" />
     <None Include="Data\Archetypes\MonkeyLivesText.json" />
+    <None Include="Data\Archetypes\OmegaHighScore.json" />
+    <None Include="Data\Archetypes\OmegaScore.json" />
+    <None Include="Data\Archetypes\OmegaWaveCount.json" />
     <None Include="Data\Archetypes\PlanetBounce.json" />
     <None Include="Data\Archetypes\PlanetJump.json" />
     <None Include="Data\Archetypes\Spaceship.json" />
     <None Include="Data\Archetypes\SpaceshipHoming.json" />
+    <None Include="Data\Archetypes\SpaceshipOmega.json" />
     <None Include="Data\Level1.json" />
     <None Include="Data\Level2.json" />
     <None Include="Data\Meshes\Mesh16x8.json" />
+    <None Include="Data\Meshes\MeshArena.json" />
     <None Include="Data\Meshes\MeshAsteroid.json" />
     <None Include="Data\Meshes\MeshBullet.json" />
     <None Include="Data\Meshes\MeshSpaceship.json" />

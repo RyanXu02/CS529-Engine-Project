@@ -1,10 +1,10 @@
 //------------------------------------------------------------------------------
 //
-// File Name:	CheatSystem.cpp
+// File Name:	OmegaScene.cpp
 // Author(s):	Ryan
 // Course:		CS529F25
-// Project:		Project 2
-// Purpose:		Template for a new .cpp file.
+// Project:		Project 6
+// Purpose:		Omega Scene.
 //
 // Copyright © 2025 DigiPen (USA) Corporation.
 //
@@ -15,18 +15,18 @@
 //------------------------------------------------------------------------------
 
 #include "Precompiled.h"
-#include <cassert>
+#include <Windows.h>
 
-#include "CheatSystem.h"
-
+#include "OmegaScene.h"
+#include "Scene.h"
 #include "SceneSystem.h"
 
-#include "Level1Scene.h"
-#include "Level2Scene.h"
-#include "SandboxScene.h"
-#include "DemoScene.h"
-#include "AsteroidsScene.h"
-#include "OmegaScene.h"
+#include "EntityFactory.h"
+#include "MeshLibrary.h"
+
+#include "ScoreSystem.h"
+
+#include "SpriteSourceLibrary.h"
 
 //------------------------------------------------------------------------------
 // External Declarations:
@@ -61,7 +61,7 @@ namespace CS529
 	//--------------------------------------------------------------------------
 	// Private Static Variables:
 	//--------------------------------------------------------------------------
-	CheatSystem* CheatSystem::instance = nullptr;
+
 	//--------------------------------------------------------------------------
 	// Private Variables:
 	//--------------------------------------------------------------------------
@@ -72,19 +72,8 @@ namespace CS529
 
 #pragma region Constructors
 
-	CheatSystem::CheatSystem(void)
-		: System("CheatSystem")
-	{
-		// Raise an assert if this system has already been created.
-		assert(instance == nullptr);
-
-		// Store this system's instance for use by static functions.
-		instance = this;
-	}
-
-	//--------------------------------------------------------------------------
-
-	CheatSystem::~CheatSystem(void)
+	OmegaScene::OmegaScene()
+		: Scene("OmegaScene"), asteroidSpawnCount(0)
 	{
 	}
 
@@ -111,13 +100,93 @@ namespace CS529
 	//--------------------------------------------------------------------------
 
 #pragma region Private Functions
-	void CheatSystem::Update(float dt) {
-		if (DGL_Input_KeyDown('1')) SceneSystem::SetPendingScene<Level1Scene>();
-		if (DGL_Input_KeyDown('2')) SceneSystem::SetPendingScene<Level2Scene>();
-		if (DGL_Input_KeyDown('3')) SceneSystem::SetPendingScene<AsteroidsScene>();
-		if (DGL_Input_KeyDown('4')) SceneSystem::SetPendingScene<OmegaScene>();
-		if (DGL_Input_KeyDown('9')) SceneSystem::SetPendingScene<SandboxScene>();
-		if (DGL_Input_KeyDown('0')) SceneSystem::SetPendingScene<DemoScene>();
+
+	void OmegaScene::Load()
+	{
+		ScoreSystem::Instance().NewGame();
+	}
+
+	bool OmegaScene::Initialize()
+	{
+		Entity* entityArena = EntityFactory::Build("Arena");
+		if (entityArena) {
+			this->AddEntity(entityArena);
+		}
+
+		Entity* SpaceshipOmega = EntityFactory::Build("SpaceshipOmega");
+		if (SpaceshipOmega) {
+			this->AddEntity(SpaceshipOmega);
+		}
+
+		Entity* OmegaScore = EntityFactory::Build("OmegaScore");
+		if (OmegaScore) {
+			this->AddEntity(OmegaScore);
+		}
+
+		Entity* OmegaHighScore = EntityFactory::Build("OmegaHighScore");
+		if (OmegaHighScore) {
+			this->AddEntity(OmegaHighScore);
+		}
+
+		Entity* OmegaWaveCount = EntityFactory::Build("OmegaWaveCount");
+		if (OmegaWaveCount) {
+			this->AddEntity(OmegaWaveCount);
+		}
+
+		DGL_Color black{ 0.0, 0.0, 0.0, 1.0 };
+		DGL_Graphics_SetBackgroundColor(&black);
+		DGL_Graphics_SetBlendMode(DGL_BM_BLEND);
+
+		asteroidSpawnCount = asteroidSpawnInitial;
+
+		ScoreSystem::Instance().Reset();
+		return true;
+	}
+
+	void OmegaScene::Update(float dt)
+	{
+		// Tell the compiler that the 'dt' variable is unused.
+		//UNREFERENCED_PARAMETER(dt);
+		if (!FindEntity("Asteroid")) SpawnWave();
+		UpdateEntities(dt);
+		CheckCollisions();
+		// NOTE: This call causes the engine to exit immediately.
+		//   Make sure to remove it when you are ready to test out a new scene.
+		// SceneSystem::EndScene();
+	}
+
+	void OmegaScene::Render() const
+	{
+		RenderEntities();
+	}
+
+	void OmegaScene::Shutdown()
+	{
+		DeleteEntities();
+		EntityFactory::DeleteAll();
+	}
+
+	void OmegaScene::Unload()
+	{
+		MeshLibrary::DeleteAll();
+		SpriteSourceLibrary::DeleteAll();
+	}
+
+	void OmegaScene::SpawnAsteroid()
+	{
+		Entity* entityAsteroid = EntityFactory::Build("Asteroid");
+		if (entityAsteroid) {
+			this->AddEntity(entityAsteroid);
+		}
+	}
+
+	void OmegaScene::SpawnWave() {
+		ScoreSystem::Instance().IncreaseWave();
+		for (unsigned int i = 0; i < asteroidSpawnCount; ++i) {
+			SpawnAsteroid();
+		}
+		// increment spawn count after every wave
+		if (asteroidSpawnCount < asteroidSpawnMaximum) asteroidSpawnCount++;
 	}
 
 #pragma endregion Private Functions

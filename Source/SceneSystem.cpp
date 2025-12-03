@@ -23,7 +23,7 @@
 #include "DemoScene.h"
 #include "System.h"
 
-#include "AsteroidsScene.h"
+#include "OmegaScene.h"
 
 //------------------------------------------------------------------------------
 // External Declarations:
@@ -114,7 +114,7 @@ namespace CS529
 	bool SceneSystem::Initialize()
 	{
 		// Set the starting (Default) scene.
-		SetPendingScene<AsteroidsScene>();
+		SetPendingScene<OmegaScene>();
 
 		// Return true if the initialization completed successfully.
 		return true;

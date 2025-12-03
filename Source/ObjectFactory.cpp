@@ -27,6 +27,7 @@
 #include "BehaviorHudText.h"
 #include "BehaviorTeleporter.h"
 #include "ColliderCircle.h"
+#include "ColliderLine.h"
 
 #include "LoggingSystem.h"
 
@@ -86,6 +87,7 @@ namespace CS529
 		Register("BehaviorHudText", []() { return new BehaviorHudText(); });
 		Register("BehaviorTeleporter", []() { return new BehaviorTeleporter(); });
 		Register("ColliderCircle", []() { return new ColliderCircle(); });
+		Register("ColliderLine", []() { return new ColliderLine(); });
 	}
 
 	//--------------------------------------------------------------------------

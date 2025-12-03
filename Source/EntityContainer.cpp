@@ -19,6 +19,7 @@
 
 #include "Entity.h"
 #include "ColliderCircle.h"
+#include "ColliderLine.h"
 
 //------------------------------------------------------------------------------
 // External Declarations:
@@ -124,6 +125,13 @@ namespace CS529
 		}
 	}
 
+	void EntityContainer::Add(Entity* entity)
+	{
+		if (!entity) return;
+		entity->Initialize();
+		entities.push_back(entity);
+	}
+
 	Entity* EntityContainer::FindByName(std::string_view findName) const
 	{
 		for (Entity* e : entities) {
@@ -139,16 +147,23 @@ namespace CS529
 		for (size_t i=0, n = entities.size(); i<n; ++i) {
 			Entity* a = entities[i];
 			if (!a) continue;
-			ColliderCircle* colliderA = a->Get<ColliderCircle>();
-			if (!colliderA) continue;
+
+			ColliderCircle* circleA = a->Get<ColliderCircle>();
+			ColliderLine* lineA = nullptr;
+			if (i==0) lineA = a->Get<ColliderLine>();
+
+			if (!circleA && !lineA) continue;
 
 			for (size_t j=i+1; j<n; ++j) {
 				Entity* b = entities[j];
 				if (!b) continue;
-				ColliderCircle* colliderB = b->Get<ColliderCircle>();
-				if (!colliderB) continue;
 
-				colliderA->CheckCollision(colliderB);
+				ColliderCircle* circleB = b->Get<ColliderCircle>();
+				if (!circleB) continue;
+
+				if (circleA) circleA->CheckCollision(circleB);
+				else if (lineA) lineA->CheckCollision(circleB);
+
 			}
 		}
 	}
